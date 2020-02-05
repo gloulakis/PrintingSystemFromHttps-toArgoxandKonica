@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.11.0.final using JasperReports Library version 6.11.0-0c4056ccaa4d25a5a8c45672d2f764ea3498bebb  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="26fa8985-41fc-4c84-9911-72c3ed49f239">
+	<property name="ireport.zoom" value="1.771561000000001"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT v.comment, v.order_code,v.inputdate,v.primarycode,v.expunit, v.expqty,v.баркод,v.ONLcode
+       FROM V_expedition_note v
+       INNER JOIN orders o
+       ON v.order_code = o.order_code
+       WHERE o.StatusID = 1 AND o.DepositorID = 217 AND v.primarycode is not null
+       AND v.inputdate BETWEEN '2020-01-18 00:00:01' AND '2020-01-21 08:00:00']]>
+	</queryString>
+	<field name="comment" class="java.lang.String"/>
+	<field name="order_code" class="java.lang.String"/>
+	<field name="inputdate" class="java.sql.Timestamp"/>
+	<field name="primarycode" class="java.lang.String"/>
+	<field name="expunit" class="java.lang.String"/>
+	<field name="expqty" class="java.math.BigDecimal"/>
+	<field name="баркод" class="java.lang.String"/>
+	<field name="ONLcode" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="80" splitType="Stretch">
+			<image>
+				<reportElement x="117" y="0" width="98" height="61" uuid="5224575f-ad4b-4d2a-9df7-830be33bbf49"/>
+				<imageExpression><![CDATA["C:\\Users\\Public\\Downloads\\Kidso\\Stock Receipt\\Logo\\bebso.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="14" y="15" width="89" height="31" uuid="3c406288-afc8-4929-832e-60c3dc126308"/>
+				<imageExpression><![CDATA["C:\\Users\\Public\\Downloads\\Kidso\\Stock Receipt\\Logo\\kidso Logo.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="453" y="11" width="86" height="50" uuid="cc2b94a1-dbb0-45c7-b510-120533622246"/>
+				<imageExpression><![CDATA["C:\\Users\\Public\\Downloads\\Kidso\\Stock Receipt\\Logo\\bERS_logo.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="40" splitType="Stretch">
+			<staticText>
+				<reportElement x="8" y="20" width="235" height="20" uuid="c178797d-7690-462d-ba33-17dc9a3b2248"/>
+				<textElement>
+					<font fontName="Arial" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Стокова разписка/Stock receipt]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="459" y="20" width="80" height="20" uuid="468c0520-74db-4372-ba7c-4e86c9d5b72f"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{comment}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="459" y="41" width="42" height="20" uuid="e871fd34-c77f-4b14-80cf-04317111d10a"/>
+				<textElement>
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[М. ед.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="501" y="41" width="38" height="20" uuid="c27e9cf7-e368-4e82-8170-b17d7393ba67"/>
+				<textElement>
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[Кол.]]></text>
+			</staticText>
+			<componentElement>
+				<reportElement positionType="Float" x="168" y="21" width="174" height="34" uuid="ef79b27d-bc38-4feb-b7d8-fa5f51c897c4"/>
+				<jr:Code128 xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" textPosition="bottom">
+					<jr:codeExpression><![CDATA[$F{order_code}]]></jr:codeExpression>
+				</jr:Code128>
+			</componentElement>
+			<textField>
+				<reportElement x="93" y="21" width="73" height="20" uuid="d2d7d88a-0aad-4898-9a7e-3cff66bdc169"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{inputdate}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="84" y="20" width="9" height="20" uuid="e61315c0-ac4d-4b6b-8f6e-e462116f95b7"/>
+				<textElement>
+					<font fontName="Arial" size="15"/>
+				</textElement>
+				<text><![CDATA[/]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="14" y="20" width="70" height="20" uuid="c26ffcad-6b7a-4a21-a6de-411134050aee"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{order_code}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="89" splitType="Stretch">
+			<textField>
+				<reportElement x="14" y="1" width="182" height="20" uuid="c9a82093-257c-4604-90f3-9fcc5759864e"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{primarycode}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="459" y="0" width="42" height="20" uuid="15bdebfb-6cc6-486e-9339-40a7b8b099f3"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{expunit}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="501" y="0" width="38" height="20" uuid="f4944ada-aab2-450a-95dc-22cb87e24e9a"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{expqty}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="8" y="0" width="527" height="1" uuid="e3153b49-4e9b-424d-95bd-5dde2f6e3c20"/>
+			</line>
+			<staticText>
+				<reportElement x="229" y="44" width="126" height="20" uuid="eee09131-e9f3-4ffb-9413-e250f824ba3c"/>
+				<textElement>
+					<font fontName="Arial" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Етикиране на продукта:]]></text>
+			</staticText>
+			<componentElement>
+				<reportElement x="355" y="20" width="200" height="50" uuid="a37b425f-493f-4563-afe4-5ef60a2f3ea7"/>
+				<jr:Code128 xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" textPosition="bottom">
+					<jr:codeExpression><![CDATA[$F{ONLcode}]]></jr:codeExpression>
+				</jr:Code128>
+			</componentElement>
+			<componentElement>
+				<reportElement x="14" y="20" width="182" height="44" uuid="6dfcbd84-2988-4c0b-9cff-ac2f8fc73495"/>
+				<jr:Code128 xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" textPosition="bottom">
+					<jr:codeExpression><![CDATA[$F{баркод}]]></jr:codeExpression>
+				</jr:Code128>
+			</componentElement>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="29" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="32" splitType="Stretch">
+			<textField>
+				<reportElement x="353" y="0" width="100" height="30" uuid="87d3aa95-7220-4b67-9e04-31546e1554e6"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="453" y="0" width="100" height="30" uuid="e8d2a18d-265b-48ac-ad76-65ab48032620"/>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA[" of " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
